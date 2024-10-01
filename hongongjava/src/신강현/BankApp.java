@@ -41,7 +41,7 @@ public class BankApp {
 
 				for (Account ele : anos) {
 					if (ele != null) {
-						System.out.printf("%s %s %d\n", ele.getAno(), ele.getOwner(), ele.getBalance());
+						System.out.printf("계좌 :%-20s\t|이름 :%-10s\t|잔액 :%d\t|\n", ele.getAno(), ele.getOwner(), ele.getBalance());
 					}
 				}
 				break;
