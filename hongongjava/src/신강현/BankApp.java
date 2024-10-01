@@ -28,29 +28,31 @@ public class BankApp {
 				String owner = sc.nextLine();
 				System.out.print("초기입금액 : ");
 				int balance = Integer.parseInt(sc.nextLine());
-				anos[cnt] = new Account(ano, owner, balance);
-				System.out.println("계좌가 생성되었습니다.");
-				cnt++;
-				break;
-				
-//				for (int i = 0; i < cnt; i++) {				
-//					if (anos[cnt].getAno().equals(ano)) {
-//						System.out.println("중복된계좌");
-//					
-//					} else {
-//						anos[i] = new Account(ano, owner, balance);
-//						cnt++;
-//						System.out.println("계좌가 생성되었습니다.");
-//					}
-//				}
-//				
+//				anos[cnt] = new Account(ano, owner, balance);
+//				System.out.println("계좌가 생성되었습니다.");
+//				cnt++;
 //				break;
+
+				boolean a = true;
+				for (int i = 0; i < cnt; i++) {				
+					if (anos[i].getAno().equals(ano)) {
+						a = false;			
+					}
+				}
+				
+				if(a) {
+					anos[cnt] = new Account(ano, owner, balance);
+					cnt++;
+					System.out.println("계좌가 생성되었습니다.");					
+				}else {
+					System.out.println("실패");
+				}
+				break;
 
 			case 2:
 				System.out.println("--------------------------------------------");
 				System.out.println("계좌목록");
 				System.out.println("--------------------------------------------");
-
 
 				for (Account ele : anos) {
 					if (ele != null) {
