@@ -21,14 +21,15 @@ public class BankApp {
 			case 1:
 				System.out.println("--------------------------------------------");
 				System.out.println("계좌생성");
-				System.out.println("--------------------------------------------");
-				System.out.print("계좌번호 : ");
+				System.out.print("--------------------------------------------");
+				System.out.print("\n계좌번호 : ");
 				String ano = sc.nextLine();
 				System.out.print("계좌주 : ");
 				String owner = sc.nextLine();
 				System.out.print("초기입금액 : ");
 				int balance = Integer.parseInt(sc.nextLine());
 				anos[cnt] = new Account(ano, owner, balance);
+				System.out.println("계좌가 생성되었습니다.");
 				cnt++;
 				break;
 				
