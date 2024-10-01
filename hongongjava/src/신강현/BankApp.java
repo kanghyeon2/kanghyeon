@@ -50,7 +50,7 @@ public class BankApp {
 				System.out.println("--------------------------------------------");
 				System.out.println("계좌목록");
 				System.out.println("--------------------------------------------");
-				System.out.println();
+
 
 				for (Account ele : anos) {
 					if (ele != null) {
