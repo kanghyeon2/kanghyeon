@@ -33,19 +33,20 @@ public class BankApp {
 //				cnt++;
 //				break;
 
-				boolean a = true;
+				boolean a = false;
 				for (int i = 0; i < cnt; i++) {				
 					if (anos[i].getAno().equals(ano)) {
-						a = false;			
+						a = true;			
 					}
 				}
 				
 				if(a) {
+					System.out.println("실패");
+									
+				}else {
 					anos[cnt] = new Account(ano, owner, balance);
 					cnt++;
-					System.out.println("계좌가 생성되었습니다.");					
-				}else {
-					System.out.println("실패");
+					System.out.println("계좌가 생성되었습니다.");	
 				}
 				break;
 
