@@ -50,6 +50,13 @@ public class BankApp {
 				}
 				break;
 
+//				if(anos[i].getAno().equals(ano)) {
+//					System.out.println("실패");
+//				}else {
+//					anos[cnt] = new Account(ano, owner, balance);<<밖으로
+//					cnt++;
+//					System.out.println("계좌가 생성되었습니다.");	
+//				}
 			case 2:
 				System.out.println("--------------------------------------------");
 				System.out.println("계좌목록");
