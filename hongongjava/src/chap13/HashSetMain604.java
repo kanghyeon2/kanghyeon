@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-import chap06.Student;
+import chap13.Student;
 
 public class HashSetMain604 {
 

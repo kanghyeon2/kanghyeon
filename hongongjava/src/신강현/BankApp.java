@@ -1,14 +1,18 @@
 package 신강현;
 
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Scanner;
+import java.util.Set;
 
 public class BankApp {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		boolean run = true;
-		int cnt = 0;
-		Account[] anos = new Account[100];
+//		int cnt = 0;
+//		Account[] anos = new Account[100];
+		Set <Account> anos = new HashSet<Account>();
 
 		while (run) {
 			System.out.println("--------------------------------------------");
@@ -33,21 +37,22 @@ public class BankApp {
 //				cnt++;
 //				break;
 
-				boolean a = false;
-				for (int i = 0; i < cnt; i++) {				
-					if (anos[i].getAno().equals(ano)) {
-						a = true;			
-					}
-				}
+//				boolean a = true;
+//				for (int i = 0; i < cnt; i++) {				
+//					if (anos[i].getAno().equals(ano)) {
+//						a = false;			
+//					}
+//				}
+//				
+//				if(a) {
+//					anos[cnt] = new Account(ano, owner, balance);
+//					cnt++;
+//					System.out.println("계좌가 생성되었습니다.");					
+//				}else {
+//					System.out.println("실패");
+//				}
 				
-				if(a) {
-					System.out.println("실패");
-									
-				}else {
-					anos[cnt] = new Account(ano, owner, balance);
-					cnt++;
-					System.out.println("계좌가 생성되었습니다.");	
-				}
+				anos.add(new Account(ano, owner, balance));
 				break;
 
 //				if(anos[i].getAno().equals(ano)) {
@@ -62,13 +67,27 @@ public class BankApp {
 				System.out.println("계좌목록");
 				System.out.println("--------------------------------------------");
 
-				for (Account ele : anos) {
-					if (ele != null) {
-						System.out.printf("계좌 :%-20s\t|이름 :%-10s\t|잔액 :%d\t|\n", ele.getAno(), ele.getOwner(),
-								ele.getBalance());
-					}
+//				for (Account ele : anos) {
+////					if (ele != null) {
+//						System.out.printf("계좌 :%-20s\t|이름 :%-10s\t|잔액 :%d\t|\n", ele.getAno(), ele.getOwner(),
+//								ele.getBalance());
+////					}
+//
+//				}
+//				int size = anos.size();
+//				System.out.println(size);
+//				for(int i=0; i<anos.size(); i++) {				
+//				Account aco = anos.get(i);
+//				System.out.println(aco.getAno());
+				
+				Iterator<Account> iterator = anos.iterator();
+				while(iterator.hasNext()) {
+					Account account = iterator.next()	;
+					System.out.println(account.getAno() + account.getBalance() + account.getOwner());
 
 				}
+				
+
 				break;
 			case 3:
 				System.out.print("계좌번호 : ");
@@ -115,3 +134,4 @@ public class BankApp {
 	}
 
 }
+
