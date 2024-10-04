@@ -10,7 +10,7 @@ public class BankApp {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		boolean run = true;
-//		int cnt = 0;
+		int cnt = 0;
 //		Account[] anos = new Account[100];
 		Set <Account> anos = new HashSet<Account>();
 
@@ -55,6 +55,8 @@ public class BankApp {
 				anos.add(new Account(ano, owner, balance));
 				break;
 
+
+
 //				if(anos[i].getAno().equals(ano)) {
 //					System.out.println("실패");
 //				}else {
@@ -92,6 +94,18 @@ public class BankApp {
 			case 3:
 				System.out.print("계좌번호 : ");
 				String ano1 = sc.nextLine();
+				int cnt1 = 0;
+				for(Account ele : anos) {					
+					if(ele.getAno().equals(ano1)) {
+						cnt1++;
+						break;
+					}
+				}
+				if(cnt1 != 1 ) {
+					System.out.println("다시입력");
+					break;
+				}
+				
 				System.out.println("예금액 > ");
 				int money = Integer.parseInt(sc.nextLine());
 				for (Account ele : anos) {
@@ -131,6 +145,7 @@ public class BankApp {
 			}
 		}
 		System.out.println("프로그램종료");
+		sc.close();
 	}
 
 }
