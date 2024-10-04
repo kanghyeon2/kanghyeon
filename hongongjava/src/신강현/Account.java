@@ -51,13 +51,21 @@ public class Account {
 	}
 
 	@Override
+//	public boolean equals(Object obj) {
+//		if (!(obj instanceof Account))
+//			return false;
+//		Account account = (Account) obj;
+//		if (Integer.parseInt(ano) != Integer.parseInt(account.ano))
+//			return false;
+//		return true;
+//	}
 	public boolean equals(Object obj) {
-		if (!(obj instanceof Account))
+		if ((obj instanceof Account)) {
+			Account account = (Account) obj;
+			return Integer.parseInt(ano) == Integer.parseInt(account.ano);
+		}else {
 			return false;
-		Account account = (Account) obj;
-		if (Integer.parseInt(ano) != Integer.parseInt(account.ano))
-			return false;
-		return true;
+		}
 	}
 }
 
