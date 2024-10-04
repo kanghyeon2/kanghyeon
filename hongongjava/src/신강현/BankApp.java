@@ -83,7 +83,7 @@ public class BankApp {
 				Iterator<Account> iterator = anos.iterator();
 				while(iterator.hasNext()) {
 					Account account = iterator.next()	;
-					System.out.println(account.getAno() + account.getBalance() + account.getOwner());
+					System.out.println(account.getAno() +"|" +  account.getOwner() +"|"+ account.getBalance());
 
 				}
 				
