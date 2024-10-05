@@ -55,7 +55,7 @@ public class BookDao {
 			pstmt.setString(2, book.getWriter());
 			pstmt.setInt(3, book.getPrice());
 			pstmt.setString(4, book.getBnum());
-
+			//select
 			// sql문장 실행
 			int rows = pstmt.executeUpdate();
 			return rows;
@@ -66,7 +66,7 @@ public class BookDao {
 		getClose();
 		return 0;
 	}
-
+	
 	// 4. select : 조건에 따른 검색(책제목) 메소드
 	public int select(String title1) {
 		getOpen();
