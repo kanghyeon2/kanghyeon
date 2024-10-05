@@ -14,7 +14,6 @@ public class BookDao {
 	public void getOpen() {
 		// database 연결
 		// jdbc 등록
-		// CRUD
 
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
@@ -84,8 +83,9 @@ public class BookDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			getClose();
 		}
-		getClose();
 		return 0;
 
 	}
@@ -115,7 +115,7 @@ public class BookDao {
 	// 6. delete 메소드 (북번호 이용)
 	public int delete(String title2) {
 		getOpen();
-		String sql = "delete from book" + "where bnum=?";
+		String sql = "delete from book " + "where title=?";
 		PreparedStatement pstmt;
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -125,8 +125,9 @@ public class BookDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}finally {
 		getClose();
+		}
 		return 0;
 
 	}
@@ -134,19 +135,24 @@ public class BookDao {
 	// 7. update 메소드 (책제목의 가격과 책번호 수정)
 	public int update(String title3, int price1, String bnum1) {
 		getOpen();
-		String sql = "" + "update book " + "price=?, bNum=? " + "where title=?";
+		String sql = "" +
+					"update book " +
+					"set price=?, bnum=? " +
+					"where title=?";
 		PreparedStatement pstmt;
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, price1);
 			pstmt.setString(2, bnum1);
 			pstmt.setString(3, title3);
-
+			int rs = pstmt.executeUpdate();
+			return rs;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}finally {
 		getClose();
+		}
 		return 0;
 	}
 }// end class

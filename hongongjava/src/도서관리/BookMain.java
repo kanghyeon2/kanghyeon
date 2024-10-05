@@ -6,7 +6,7 @@ public class BookMain {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		BookDao dao =null;
+		BookDao dao = new BookDao();
 		int cnt = 0;
 		boolean run = true;
 		
@@ -49,7 +49,14 @@ public class BookMain {
 			case 4 : //선택4번 : 도서삭제
 				System.out.print("책제목 : ");
 				String title2 = sc.nextLine();
-				dao.delete(title2);
+				int rows = dao.delete(title2);
+				if(rows ==1 ) {
+					
+					System.out.println("성공");
+					
+				}else {
+					System.out.println("실패");
+				}
 				
 				break;
 
@@ -60,7 +67,15 @@ public class BookMain {
 				int price1 = Integer.parseInt(sc.nextLine());
 				System.out.print("책번호 : ");
 				String bnum1 = sc.nextLine();
-				dao.update(title3, price1, bnum1);
+//				dao.update(title3, price1, bnum1);
+				int rows1 = dao.update(title3, price1, bnum1);
+				if(rows1 ==1 ) {
+					
+					System.out.println("성공");
+					
+				}else {
+					System.out.println("실패");
+				}
 				
 				break;
 			case 6 : //선택6번 : 프로그램 종료
