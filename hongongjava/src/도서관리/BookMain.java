@@ -44,23 +44,30 @@ public class BookMain {
 				
 				break;
 			case 3 : //선택3번 : 도서전체 조회
-				
+				dao.selectAll();
 				break;
 			case 4 : //선택4번 : 도서삭제
+				System.out.print("책제목 : ");
+				String title2 = sc.nextLine();
+				dao.delete(title2);
 				
 				break;
+
 			case 5 : //선택5번 : 도서 정보 변경
+				System.out.print("책제목 : ");
+				String title3 = sc.nextLine();
+				System.out.println("가격 : ");
+				int price1 = Integer.parseInt(sc.nextLine());
+				System.out.print("책번호 : ");
+				String bnum1 = sc.nextLine();
+				dao.update(title3, price1, bnum1);
 				
 				break;
 			case 6 : //선택6번 : 프로그램 종료
 				run = false;
 				sc.close();
 				System.out.println("프로그램 종료");
-				
-			
-				
-				
-				
+
 			}
 		}
 

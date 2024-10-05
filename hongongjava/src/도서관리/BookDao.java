@@ -5,8 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import javadb.Board;
+import java.util.List;
 
 public class BookDao {
 	Connection conn = null;
@@ -70,28 +69,84 @@ public class BookDao {
 	}
 
 	// 4. select : 조건에 따른 검색(책제목) 메소드
-	public void select(String title1) {
-			getOpen();
-			String sql = "select * from book " +
-					 		"where title=?";
-			PreparedStatement pstmt;
-			try {
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, title1);
-				ResultSet rs = pstmt.executeQuery();
-				while(rs.next()) {
-					Book bk = new Book(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4));
-					System.out.println(bk);
-			}} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+	public int select(String title1) {
+		getOpen();
+		String sql = "select * from book " + "where title=?";
+		PreparedStatement pstmt;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, title1);
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				Book bk = new Book(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4));
+				System.out.println(bk);
 			}
-
-			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		getClose();
+		return 0;
+
+	}
 
 	// 5. select : 목록전체 조회 메소드
-	// 6. delete 메소드 (북번호 이용)
-	// 7. update 메소드 (책제목의 가격과 책번호 수정)
+	public List<Book> selectAll() {
+		getOpen();
+		String sql = "select * from book";
+		PreparedStatement pstmt;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				Book bk = new Book(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4));
+				System.out.println(bk);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
+		getClose();
+		return null;
+
+	}
+
+	// 6. delete 메소드 (북번호 이용)
+	public int delete(String title2) {
+		getOpen();
+		String sql = "delete from book" + "where bnum=?";
+		PreparedStatement pstmt;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, title2);
+			int rs = pstmt.executeUpdate();
+			return rs;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		getClose();
+		return 0;
+
+	}
+
+	// 7. update 메소드 (책제목의 가격과 책번호 수정)
+	public int update(String title3, int price1, String bnum1) {
+		getOpen();
+		String sql = "" + "update book " + "price=?, bNum=? " + "where title=?";
+		PreparedStatement pstmt;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, price1);
+			pstmt.setString(2, bnum1);
+			pstmt.setString(3, title3);
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		getClose();
+		return 0;
+	}
 }// end class
