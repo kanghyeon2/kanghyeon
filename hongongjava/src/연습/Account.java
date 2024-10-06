@@ -40,15 +40,18 @@ public class Account {
 		this.balance = balance;
 	}
 
-	
-
 	@Override
-	public int hashCode() {
-		return Integer.parseInt(ano);
-		
+	public String toString() {
+		return ano + "\t" + owner + "\t" + balance + "\t" ;
 	}
 
-	@Override
+//	@Override
+//	public int hashCode() {
+//		return Integer.parseInt(ano);
+//		
+//	}
+
+//	@Override
 //	public boolean equals(Object obj) {
 //		if (!(obj instanceof Account))
 //			return false;
@@ -57,13 +60,13 @@ public class Account {
 //			return false;
 //		return true;
 //	}
-	public boolean equals(Object obj) {
-		if ((obj instanceof Account)) {
-			Account account = (Account) obj;
-			return Integer.parseInt(ano) == Integer.parseInt(account.ano);
-		}else {
-			return false;
-		}
-	}
+//	public boolean equals(Object obj) {
+//		if ((obj instanceof Account)) {
+//			Account account = (Account) obj;
+//			return Integer.parseInt(ano) == Integer.parseInt(account.ano);
+//		}else {
+//			return false;
+//		}
+//	}
 }
 
