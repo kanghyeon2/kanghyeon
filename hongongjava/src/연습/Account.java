@@ -1,7 +1,5 @@
 package 연습;
 
-import chap13.Student;
-
 public class Account {
 	// 필드
 	private String ano;
